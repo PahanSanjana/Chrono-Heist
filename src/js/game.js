@@ -51,6 +51,26 @@ window.addEventListener("keydown", (evt) => {
     if (evt.key === "r") rewind();
 });
 
+// ✅ Add Guard
+const guard = BABYLON.MeshBuilder.CreateBox("guard", { size: 1 }, scene);
+guard.position = new BABYLON.Vector3(5, 0, 0);
+
+// ✅ Patrol Logic
+let patrolDirection = 1;
+scene.registerBeforeRender(() => {
+    guard.position.x += 0.01 * patrolDirection; // Moves back and forth
+    if (guard.position.x > 5) patrolDirection = -1;
+    if (guard.position.x < -5) patrolDirection = 1;
+});
+
+// ✅ Update Rewind Meter
+const rewindMeter = document.getElementById("rewindMeter");
+function updateMeter() {
+    const percent = (timeStack.length / REWIND_LIMIT) * 100;
+    rewindMeter.style.width = `${percent}%`;
+}
+scene.registerBeforeRender(updateMeter);
+
 // Render loop (to run the scene)
 engine.runRenderLoop(() => {
     scene.render();
