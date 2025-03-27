@@ -1,5 +1,4 @@
-# Chrono Heist ⏳🎮  ![Gameplay Screenshot](/assets/screenshot.png) *Example: Player rewinding time to avoid detection*
-
+# Chrono Heist ⏳🎮 
 A **web-based stealth-puzzle game** where players use time manipulation to pull off heists. Rewind mistakes, outsmart guards, and solve environmental puzzles.
 
 ## 🚀 Features
